@@ -132,4 +132,52 @@ DatabaseManager.saveToDatabase();
 
 // ----- Inheritance -----
 
-class Flower 
+class Flower {
+  water() {
+    console.log('Watering the flower');
+    this.lastWatered = Date();
+  }
+}
+
+class Tree {
+  water() {
+    console.log('Watering the tree');
+    this.lastWatered = Date();
+  }
+}
+
+class Bush {
+  water() {
+    console.log('Watering the bush');
+    this.lastWatered = Date();
+  }
+}
+
+// Above classes have almost identical code. We can remove this duplication by using inheritance.
+
+class Plant {
+  water() {
+    console.log(`Watering the ${this.type}`);
+    this.lastWatered = Date();
+  }
+}
+
+class Flower extends Plant {
+  constructor() {
+    this.type = 'flower';
+  }
+}
+
+class Tree extends Plant {
+  constructor() {
+    this.type = 'tree';
+  }
+}
+
+class Bush extends Plant {
+  constructor() {
+    this.type = 'bush';
+  }
+}
+
+// By arranging the code like above, if we want to change the water method, it only has to be done in one place. The other classes inherits the behaviour from the Plant class.
